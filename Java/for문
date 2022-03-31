@@ -1,0 +1,69 @@
+백준 알고리즘 1316번 풀다가 생긴 문제
+
+
+for(int i=0;i<testcase;i++){
+            count=0;
+        
+            for(int j=0;j<input[i].length()-1;j++){//for문 도중에 바뀌면 바뀐상태로 동작
+                System.out.println(1);
+           
+                if(input[i].charAt(j) != input[i].charAt(j+1)){
+                    count++;
+                    input_length = input[i].length();
+                    input[i]= input[i].replace(Character.toString(input[i].charAt(j)), "");
+                    if(input_length-input[i].length() != count){
+                        input_value[i]=0;
+                    }
+                    count=0;
+                }
+                else {
+                    count++;
+                }
+            }
+         
+        }
+        
+ ===================================
+ 
+ 2번째 for문에서 input[i].length 있다.
+ input[i]= input[i].replace(Character.toString(input[i].charAt(j)), ""); 에서 input[i] 가 바뀐다. 
+ 이때 어떻게 for이 돌아가는지 알아보자
+ 
+ ex) bbaaaacc 실행했을때
+ 
+ 원래 내가 생각했던것은 두번째 for문이 7번 돌아야하는데 실제 돌려보면
+=============================
+1
+bbaaaacc
+두번째 for문 실행!
+두번째 for문 실행!
+두번째 for문 실행!
+두번째 for문 실행!
+0
+==============================
+이렇게 4번 돌아갔다.
+length의 길이가 8 -> 6 -> 2 로 변하는데 j가 커지면서 length를 따라 잡게 된다.
+
+for(int j=0;j<input[i].length()-1;j++){//for문 도중에 바뀌면 바뀐상태로 동작
+                System.out.println("두번째 for문 실행!");
+                System.out.println(j);
+                System.out.println(input[i].length()-1);
+이렇게 넣어서 출력하면
+===============================
+1
+bbaaaacc
+두번째 for문 실행!
+0
+7
+두번째 for문 실행!
+1
+7
+두번째 for문 실행!
+2
+5
+두번째 for문 실행!
+3
+5
+0
+===============================
+=> 4 4 가 되면서 더이상 작동 x 즉 bbaa 까지만 확인한 것이다.
