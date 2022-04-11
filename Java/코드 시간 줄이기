@@ -1,0 +1,16 @@
+1. BufferedReader 사용
+BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+String a = in.readline();
+
+이렇게 쓰기
+
+다만
+
+int a = in.read(); //in.read()의 반환값 int
+System.out.println(a);
+
+이 경우
+33을 입력하면 51이 출력된다
+
+이유는 in.read()가 문자열을 아스키 코드로 읽기 때문이다 ex) A 입력하면 65 출력
