@@ -14,3 +14,17 @@ System.out.println(a);
 33을 입력하면 51이 출력된다
 
 이유는 in.read()가 문자열을 아스키 코드로 읽기 때문이다 ex) A 입력하면 65 출력
+
+
+2. StringBuilder 사용
+여러번 출력을 할때 한번에 모아서 출력을 하면 시간을 단축할 수 있다.
+System.out.println(1); (x)
+System.out.println(2); 
+System.out.println(3); 
+
+
+StringBuilder sb = new StringBuilder(); (o)
+sb.append(1); 
+sb.append(2);
+sb.append(3); 
+System.out.print(sb.toString());
